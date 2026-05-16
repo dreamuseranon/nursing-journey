@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Heart, Sparkles, ArrowRight, AlertCircle, BookOpen, MessageCircle, Calendar } from 'lucide-react';
+import { Heart, Sparkles, ArrowRight, AlertCircle, BookOpen, MessageCircle, Calendar, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface BlogPost {
@@ -10,12 +10,14 @@ interface BlogPost {
   category: string;
   date: string;
   readTime: string;
+  isNew?: boolean;
 }
 
 function BlogPage() {
   const [searchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category');
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryFilter || 'all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = [
     { id: 'all', name: 'All Posts', icon: BookOpen, color: 'text-primary' },
@@ -63,7 +65,8 @@ function BlogPage() {
       excerpt: 'Most of us did not feel prepared for the HESI final. Not because we did not study but because we were not taught effectively throughout the semester.',
       category: 'the-truth-about-mcphs',
       date: 'May 18, 2026',
-      readTime: '5 min read'
+      readTime: '5 min read',
+      isNew: true
     },
     {
       id: '6',
@@ -71,13 +74,18 @@ function BlogPage() {
       excerpt: 'Nursing school is hard. But there is a difference between the normal hard and the kind of hard that comes from being in a program that does not support you well.',
       category: 'nursing-school-life',
       date: 'May 22, 2026',
-      readTime: '5 min read'
+      readTime: '5 min read',
+      isNew: true
     },
   ];
 
-  const filteredPosts = selectedCategory === 'all'
-    ? blogPosts
-    : blogPosts.filter(post => post.category === selectedCategory);
+  const filteredPosts = blogPosts
+    .filter(post => selectedCategory === 'all' || post.category === selectedCategory)
+    .filter(post =>
+      searchQuery === '' ||
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -115,6 +123,20 @@ function BlogPage() {
         </p>
       </div>
 
+      {/* Search Bar */}
+      <div className="mb-8">
+        <div className="relative max-w-xl mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Search posts... (try HESI, clinical, study)"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-border bg-white focus:outline-none focus:border-primary transition-colors text-foreground placeholder:text-muted-foreground"
+          />
+        </div>
+      </div>
+
       <div className="mb-12">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4 flex items-center gap-2">
           <Sparkles className="w-4 h-4" />
@@ -145,7 +167,12 @@ function BlogPage() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {filteredPosts.map((post) => (
           <Link key={post.id} to={`/blog/${post.id}`} className="group">
-            <article className="cute-card border-border hover:border-primary/40 h-full flex flex-col">
+            <article className="cute-card border-border hover:border-primary/40 h-full flex flex-col relative">
+              {post.isNew && (
+                <div className="absolute -top-3 -right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  New
+                </div>
+              )}
               <div className="flex items-center justify-between mb-3">
                 <span className={`sticker-badge text-xs border ${getCategoryColor(post.category)}`}>
                   {getCategoryName(post.category)}
@@ -175,9 +202,13 @@ function BlogPage() {
       {filteredPosts.length === 0 && (
         <div className="text-center py-12 cute-card border-border">
           <Heart className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-          <h3 className="text-xl font-semibold mb-2">No posts in this category yet</h3>
-          <p className="text-muted-foreground mb-6">Check back soon for more stories!</p>
-          <Button onClick={() => setSelectedCategory('all')} variant="outline">
+          <h3 className="text-xl font-semibold mb-2">
+            {searchQuery ? `No posts found for "${searchQuery}"` : 'No posts in this category yet'}
+          </h3>
+          <p className="text-muted-foreground mb-6">
+            {searchQuery ? 'Try a different search term!' : 'Check back soon for more stories!'}
+          </p>
+          <Button onClick={() => { setSelectedCategory('all'); setSearchQuery(''); }} variant="outline">
             View All Posts
           </Button>
         </div>
