@@ -201,23 +201,26 @@ function BlogPostPage() {
             <Sparkles className="w-5 h-5 text-primary" />
             <Heart className="w-5 h-5 text-primary" fill="currentColor" />
           </div>
-          <Button variant="outline" size="sm" className="gap-2">
-            <Share2 className="w-4 h-4" />
-            Share Post
-          </Button>
-        </div>
-      </article>
-
-      <div className="cute-card border-border bg-muted/30">
-        <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-5 h-5 text-primary" />
-          <h3 className="font-bold text-lg">Read More Stories</h3>
-        </div>
-        <Link to="/blog">
-          <Button variant="outline" className="w-full">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            View All Blog Posts
-          </Button>
+         <Button
+  variant="outline"
+  size="sm"
+  className="gap-2"
+  onClick={() => {
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        text: post.content[0],
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  }}
+>
+  <Share2 className="w-4 h-4" />
+  Share Post
+</Button>
         </Link>
       </div>
     </div>
