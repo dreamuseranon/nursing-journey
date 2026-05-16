@@ -86,6 +86,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Sparkles className="w-4 h-4" />
               <Heart className="w-4 h-4" fill="currentColor" />
             </div>
+            <p className="text-xs text-muted-foreground max-w-lg leading-relaxed italic">
+              Disclaimer: All content on this blog reflects the personal opinions, alleged experiences, and subjective perceptions of an anonymous student. All statements are alleged and represent the authors personal experience only. Nothing on this site is intended as fact, legal advice, or reporting. This blog is protected under the First Amendment as personal opinion and free speech. All patient details have been changed or omitted to protect privacy. The author makes no guarantees as to the accuracy of any third party information discussed.
+            </p>
             <p className="text-xs text-muted-foreground">© 2026 The Masked Nurse • Stay Anonymous, Stay True</p>
           </div>
         </div>
