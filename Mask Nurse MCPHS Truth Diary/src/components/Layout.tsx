@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Sparkles, Stethoscope, Home, BookOpen, User, Users } from 'lucide-react';
+import { Heart, Sparkles, Stethoscope, Home, BookOpen, User, Users, Star } from 'lucide-react';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -41,6 +41,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Link to="/blog" className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${isActive('/blog') ? 'bg-primary text-primary-foreground shadow-lg' : 'hover:bg-muted'}`}>
                 <BookOpen className="w-4 h-4" />Blog
               </Link>
+              <Link to="/resources" className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${isActive('/resources') ? 'bg-primary text-primary-foreground shadow-lg' : 'hover:bg-muted'}`}>
+                <Star className="w-4 h-4" />Resources
+              </Link>
               <Link to="/student-stories" className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${isActive('/student-stories') ? 'bg-primary text-primary-foreground shadow-lg' : 'hover:bg-muted'}`}>
                 <Users className="w-4 h-4" />Student Stories
               </Link>
@@ -55,6 +58,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </Link>
               <Link to="/blog" className={`p-2 rounded-full ${isActive('/blog') ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>
                 <BookOpen className="w-5 h-5" />
+              </Link>
+              <Link to="/resources" className={`p-2 rounded-full ${isActive('/resources') ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>
+                <Star className="w-5 h-5" />
               </Link>
               <Link to="/student-stories" className={`p-2 rounded-full ${isActive('/student-stories') ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>
                 <Users className="w-5 h-5" />
