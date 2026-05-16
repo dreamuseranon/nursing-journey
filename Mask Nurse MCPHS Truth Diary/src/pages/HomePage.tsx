@@ -3,48 +3,106 @@ import { Heart, Sparkles, ArrowRight, BookOpen, AlertCircle, MessageCircle, Sear
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
-function KawaiiNurse({ size = 160 }: { size?: number }) {
+function CartoonNurse({ size = 200 }: { size?: number }) {
   return (
-    <svg width={size} height={size * 1.3} viewBox="0 0 160 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="80" cy="42" rx="34" ry="8" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
-      <rect x="46" y="34" width="68" height="12" rx="4" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
-      <rect x="70" y="28" width="20" height="10" rx="3" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
-      <rect x="78" y="30" width="4" height="10" rx="1" fill="hsl(340,60%,72%)"/>
-      <rect x="74" y="34" width="12" height="4" rx="1" fill="hsl(340,60%,72%)"/>
-      <ellipse cx="80" cy="72" rx="30" ry="32" fill="hsl(30,40%,90%)"/>
-      <ellipse cx="68" cy="68" rx="7" ry="8" fill="hsl(250,40%,25%)"/>
-      <ellipse cx="92" cy="68" rx="7" ry="8" fill="hsl(250,40%,25%)"/>
-      <ellipse cx="70" cy="66" rx="2.5" ry="3" fill="white"/>
-      <ellipse cx="94" cy="66" rx="2.5" ry="3" fill="white"/>
-      <circle cx="71" cy="65" r="1" fill="white" opacity="0.8"/>
-      <circle cx="95" cy="65" r="1" fill="white" opacity="0.8"/>
-      <ellipse cx="58" cy="76" rx="8" ry="5" fill="hsl(340,60%,80%)" opacity="0.5"/>
-      <ellipse cx="102" cy="76" rx="8" ry="5" fill="hsl(340,60%,80%)" opacity="0.5"/>
-      <rect x="56" y="74" width="48" height="24" rx="10" fill="hsl(195,60%,85%)" stroke="hsl(195,60%,65%)" strokeWidth="1.5"/>
-      <path d="M56 82 Q80 88 104 82" stroke="hsl(195,60%,65%)" strokeWidth="1" fill="none"/>
-      <path d="M56 90 Q80 96 104 90" stroke="hsl(195,60%,65%)" strokeWidth="1" fill="none" opacity="0.5"/>
-      <path d="M56 78 Q46 72 50 65" stroke="hsl(195,60%,65%)" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
-      <path d="M104 78 Q114 72 110 65" stroke="hsl(195,60%,65%)" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
-      <path d="M42 108 Q42 160 48 195 L112 195 Q118 160 118 108 Q100 96 80 96 Q60 96 42 108Z" fill="hsl(195,60%,82%)" stroke="hsl(195,60%,65%)" strokeWidth="1.5"/>
-      <rect x="70" y="110" width="20" height="14" rx="3" fill="white" stroke="hsl(195,60%,65%)" strokeWidth="1" opacity="0.7"/>
-      <rect x="78" y="112" width="4" height="10" rx="1" fill="hsl(340,60%,72%)"/>
-      <rect x="74" y="116" width="12" height="4" rx="1" fill="hsl(340,60%,72%)"/>
-      <ellipse cx="36" cy="138" rx="12" ry="36" fill="hsl(195,60%,82%)" stroke="hsl(195,60%,65%)" strokeWidth="1.5"/>
-      <ellipse cx="124" cy="138" rx="12" ry="36" fill="hsl(195,60%,82%)" stroke="hsl(195,60%,65%)" strokeWidth="1.5"/>
-      <rect x="118" y="158" width="22" height="28" rx="4" fill="hsl(40,60%,90%)" stroke="hsl(40,40%,60%)" strokeWidth="1.2"/>
-      <rect x="122" y="162" width="14" height="2" rx="1" fill="hsl(263,52%,65%)" opacity="0.6"/>
-      <rect x="122" y="167" width="14" height="2" rx="1" fill="hsl(263,52%,65%)" opacity="0.6"/>
-      <rect x="122" y="172" width="10" height="2" rx="1" fill="hsl(263,52%,65%)" opacity="0.6"/>
-      <rect x="126" y="156" width="6" height="5" rx="1" fill="hsl(263,52%,65%)" opacity="0.8"/>
-      <path d="M24 148 Q14 138 18 125" stroke="hsl(263,52%,65%)" strokeWidth="3" fill="none" strokeLinecap="round"/>
-      <circle cx="17" cy="122" r="5" fill="hsl(263,52%,65%)" opacity="0.8"/>
-      <rect x="56" y="192" width="22" height="18" rx="4" fill="hsl(250,30%,85%)"/>
-      <rect x="82" y="192" width="22" height="18" rx="4" fill="hsl(250,30%,85%)"/>
-      <ellipse cx="67" cy="210" rx="14" ry="5" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1"/>
-      <ellipse cx="93" cy="210" rx="14" ry="5" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1"/>
-      <path d="M138 50 L140 44 L142 50 L148 52 L142 54 L140 60 L138 54 L132 52 Z" fill="hsl(340,60%,72%)" opacity="0.8"/>
-      <path d="M20 90 L21.5 86 L23 90 L27 91.5 L23 93 L21.5 97 L20 93 L16 91.5 Z" fill="hsl(263,52%,65%)" opacity="0.7"/>
-      <circle cx="145" cy="90" r="3" fill="hsl(195,60%,68%)" opacity="0.7"/>
+    <svg width={size} height={size * 1.2} viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Hair - flowing auburn */}
+      <ellipse cx="100" cy="58" rx="38" ry="42" fill="hsl(20,65%,42%)"/>
+      <path d="M62 55 Q55 90 58 130 Q65 125 70 115 Q68 90 72 70Z" fill="hsl(20,65%,38%)"/>
+      <path d="M138 55 Q145 90 142 130 Q135 125 130 115 Q132 90 128 70Z" fill="hsl(20,65%,38%)"/>
+      <path d="M70 115 Q66 140 70 165 Q78 170 80 160 Q76 140 78 120Z" fill="hsl(20,65%,38%)"/>
+      <path d="M130 115 Q134 140 130 165 Q122 170 120 160 Q124 140 122 120Z" fill="hsl(20,65%,38%)"/>
+
+      {/* Nurse cap */}
+      <path d="M68 48 Q100 35 132 48 L128 58 Q100 48 72 58Z" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
+      <rect x="82" y="38" width="36" height="14" rx="5" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
+      {/* Red cross on cap */}
+      <rect x="96" y="40" width="8" height="14" rx="2" fill="hsl(340,70%,60%)"/>
+      <rect x="90" y="45" width="20" height="6" rx="2" fill="hsl(340,70%,60%)"/>
+
+      {/* Face */}
+      <ellipse cx="100" cy="78" rx="32" ry="34" fill="hsl(25,60%,88%)"/>
+
+      {/* Eyes - big cute cartoon style */}
+      <ellipse cx="86" cy="72" rx="10" ry="11" fill="white"/>
+      <ellipse cx="114" cy="72" rx="10" ry="11" fill="white"/>
+      <ellipse cx="86" cy="73" rx="7" ry="8" fill="hsl(200,80%,35%)"/>
+      <ellipse cx="114" cy="73" rx="7" ry="8" fill="hsl(200,80%,35%)"/>
+      <ellipse cx="86" cy="73" rx="4" ry="5" fill="hsl(210,90%,20%)"/>
+      <ellipse cx="114" cy="73" rx="4" ry="5" fill="hsl(210,90%,20%)"/>
+      {/* Eye shine */}
+      <ellipse cx="89" cy="70" rx="2.5" ry="3" fill="white"/>
+      <ellipse cx="117" cy="70" rx="2.5" ry="3" fill="white"/>
+      <circle cx="90" cy="69" r="1" fill="white"/>
+      <circle cx="118" cy="69" r="1" fill="white"/>
+      {/* Eyelashes */}
+      <path d="M76 64 Q78 60 80 63" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M82 62 Q83 58 85 61" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M88 62 Q90 58 91 61" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M120 62 Q121 58 123 61" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M115 62 Q117 58 118 61" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M109 64 Q111 60 113 63" stroke="hsl(20,40%,25%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      {/* Eyebrows */}
+      <path d="M77 61 Q86 56 95 60" stroke="hsl(20,50%,30%)" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <path d="M105 60 Q114 56 123 61" stroke="hsl(20,50%,30%)" strokeWidth="2" fill="none" strokeLinecap="round"/>
+
+      {/* Blush */}
+      <ellipse cx="74" cy="82" rx="10" ry="6" fill="hsl(340,70%,80%)" opacity="0.55"/>
+      <ellipse cx="126" cy="82" rx="10" ry="6" fill="hsl(340,70%,80%)" opacity="0.55"/>
+
+      {/* Medical mask - cute with pattern */}
+      <rect x="72" y="84" width="56" height="26" rx="10" fill="hsl(195,65%,82%)" stroke="hsl(195,65%,60%)" strokeWidth="1.5"/>
+      <path d="M72 93 Q100 100 128 93" stroke="hsl(195,65%,60%)" strokeWidth="1" fill="none"/>
+      <path d="M72 101 Q100 107 128 101" stroke="hsl(195,65%,60%)" strokeWidth="1" fill="none" opacity="0.5"/>
+      {/* Small hearts on mask */}
+      <path d="M88 91 Q88 88 91 88 Q94 88 94 91 Q94 94 88 97 Q82 94 82 91 Q82 88 85 88 Q88 88 88 91Z" fill="hsl(340,70%,72%)" opacity="0.6" transform="scale(0.5) translate(88,90)"/>
+      {/* Mask strings */}
+      <path d="M72 88 Q60 83 64 75" stroke="hsl(195,65%,60%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M128 88 Q140 83 136 75" stroke="hsl(195,65%,60%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+
+      {/* Body - white uniform */}
+      <path d="M55 120 Q52 175 55 220 L145 220 Q148 175 145 120 Q125 108 100 108 Q75 108 55 120Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      {/* Uniform collar blue trim */}
+      <path d="M80 110 Q100 120 120 110 L118 125 Q100 132 82 125Z" fill="hsl(195,60%,75%)" opacity="0.8"/>
+      {/* Red cross on uniform */}
+      <rect x="96" y="138" width="8" height="22" rx="2" fill="hsl(340,70%,65%)" opacity="0.8"/>
+      <rect x="90" y="145" width="20" height="8" rx="2" fill="hsl(340,70%,65%)" opacity="0.8"/>
+      {/* Pocket */}
+      <rect x="60" y="145" width="18" height="14" rx="3" fill="hsl(195,60%,90%)" stroke="hsl(195,60%,70%)" strokeWidth="1"/>
+
+      {/* LEFT ARM - waving up enthusiastically */}
+      <path d="M55 120 Q40 110 28 88 Q22 75 30 68 Q38 62 44 72 Q50 82 52 95 Q54 108 58 118Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      {/* Waving hand */}
+      <ellipse cx="30" cy="65" rx="14" ry="12" fill="hsl(25,60%,88%)"/>
+      {/* Fingers spread out waving */}
+      <path d="M20 58 Q17 48 20 44 Q23 42 25 48 Q24 54 22 58Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M26 55 Q24 44 27 40 Q31 38 32 45 Q31 51 28 55Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M33 54 Q32 43 35 40 Q39 39 39 46 Q38 52 35 55Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M39 56 Q39 46 42 44 Q46 44 45 51 Q44 56 41 57Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M18 63 Q14 55 17 51 Q20 49 22 55 Q22 60 20 63Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+
+      {/* RIGHT ARM - holding stethoscope */}
+      <path d="M145 120 Q158 130 164 155 Q166 168 158 172 Q150 175 146 162 Q142 148 140 132Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      {/* Hand */}
+      <ellipse cx="160" cy="168" rx="11" ry="10" fill="hsl(25,60%,88%)"/>
+      {/* Stethoscope */}
+      <path d="M160 168 Q172 160 175 148 Q178 136 170 130 Q162 124 156 132 Q152 140 158 146 Q164 152 168 148" stroke="hsl(263,52%,60%)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+      <circle cx="168" cy="148" r="6" fill="hsl(263,52%,65%)" stroke="hsl(263,52%,50%)" strokeWidth="1.5"/>
+      <circle cx="156" cy="133" r="4" fill="hsl(263,52%,72%)" opacity="0.8"/>
+
+      {/* Legs */}
+      <rect x="68" y="218" width="26" height="22" rx="5" fill="hsl(250,25%,82%)"/>
+      <rect x="106" y="218" width="26" height="22" rx="5" fill="hsl(250,25%,82%)"/>
+      {/* Shoes */}
+      <ellipse cx="81" cy="240" rx="18" ry="7" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.2"/>
+      <ellipse cx="119" cy="240" rx="18" ry="7" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.2"/>
+
+      {/* Sparkles around her */}
+      <path d="M170 50 L172 44 L174 50 L180 52 L174 54 L172 60 L170 54 L164 52 Z" fill="hsl(340,60%,72%)" opacity="0.9"/>
+      <path d="M18 100 L19.5 95 L21 100 L26 101.5 L21 103 L19.5 108 L18 103 L13 101.5 Z" fill="hsl(263,52%,65%)" opacity="0.8"/>
+      <circle cx="175" cy="90" r="4" fill="hsl(195,60%,68%)" opacity="0.8"/>
+      <circle cx="15" cy="70" r="3" fill="hsl(340,60%,72%)" opacity="0.6"/>
+      <path d="M165 108 L166 104 L167 108 L171 109 L167 110 L166 114 L165 110 L161 109 Z" fill="hsl(195,60%,68%)" opacity="0.7"/>
     </svg>
   );
 }
@@ -92,10 +150,10 @@ function HomePage() {
 
       {/* Hero Section */}
       <section className="mb-20">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
 
-          {/* Left -- text */}
-          <div className="flex-1 text-center md:text-left">
+          {/* Left text */}
+          <div className="flex-1 text-center md:text-left order-2 md:order-1">
             <div className="inline-block mb-5">
               <div className="sticker-badge bg-gradient-cute text-white text-base px-5 py-2">
                 <Sparkles className="w-4 h-4" />
@@ -104,7 +162,7 @@ function HomePage() {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
               <span className="text-gradient-pink">The Masked</span>
               <br />
               <span className="text-gradient-pink">Nurse 🩺</span>
@@ -134,7 +192,6 @@ function HomePage() {
               </Link>
             </div>
 
-            {/* Search */}
             <form onSubmit={handleSearch} className="max-w-md">
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -143,7 +200,7 @@ function HomePage() {
                   placeholder="Search posts... HESI, clinical, MCPHS"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-24 py-3 rounded-full border-2 border-border bg-white focus:outline-none focus:border-primary transition-colors text-sm text-foreground placeholder:text-muted-foreground shadow-sm"
+                  className="w-full pl-11 pr-24 py-3 rounded-full border-2 border-border bg-white focus:outline-none focus:border-primary transition-colors text-sm placeholder:text-muted-foreground shadow-sm"
                 />
                 <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1.5 rounded-full text-sm font-bold hover:bg-primary/90 transition-colors">
                   Search
@@ -152,22 +209,21 @@ function HomePage() {
             </form>
           </div>
 
-          {/* Right -- kawaii nurse */}
-          <div className="flex-shrink-0 relative">
+          {/* Right - cartoon nurse waving */}
+          <div className="flex-shrink-0 order-1 md:order-2 relative">
             <div className="relative">
-              {/* Glow background */}
-              <div className="absolute inset-0 rounded-full blur-3xl opacity-20 bg-gradient-cute scale-75 translate-y-8" />
+              <div className="absolute inset-0 rounded-full blur-3xl opacity-15 bg-gradient-cute scale-90 translate-y-10" />
               <div className="nurse-bob relative z-10">
-                <KawaiiNurse size={200} />
+                <CartoonNurse size={220} />
               </div>
-              {/* Floating badges around nurse */}
-              <div className="absolute top-4 -left-8 bg-white rounded-2xl px-3 py-2 shadow-lg border border-primary/20 text-xs font-bold text-primary float-decoration" style={{animationDelay: '0.5s'}}>
+              {/* Floating badges */}
+              <div className="absolute top-8 -left-6 bg-white rounded-2xl px-3 py-1.5 shadow-lg border border-primary/20 text-xs font-bold text-primary float-decoration" style={{animationDelay: '0.5s'}}>
                 🩺 RN Student
               </div>
-              <div className="absolute top-1/2 -right-10 bg-white rounded-2xl px-3 py-2 shadow-lg border border-secondary/20 text-xs font-bold text-pink-600 float-decoration" style={{animationDelay: '1.5s'}}>
+              <div className="absolute top-1/2 -right-8 bg-white rounded-2xl px-3 py-1.5 shadow-lg border border-pink-200 text-xs font-bold text-pink-600 float-decoration" style={{animationDelay: '1.5s'}}>
                 💬 Anonymous
               </div>
-              <div className="absolute bottom-16 -left-10 bg-white rounded-2xl px-3 py-2 shadow-lg border border-accent/20 text-xs font-bold text-sky-600 float-decoration" style={{animationDelay: '1s'}}>
+              <div className="absolute bottom-24 -left-8 bg-white rounded-2xl px-3 py-1.5 shadow-lg border border-sky-200 text-xs font-bold text-sky-600 float-decoration" style={{animationDelay: '1s'}}>
                 ✦ MCPHS Truth
               </div>
             </div>
@@ -254,9 +310,7 @@ function HomePage() {
       {/* MCPHS CTA */}
       <section className="mt-20 text-center">
         <div className="cute-card border-primary/25 bg-gradient-to-br from-purple-50 via-pink-50 to-sky-50 max-w-2xl mx-auto">
-          <div className="flex justify-center mb-4">
-            <KawaiiNurse size={80} />
-          </div>
+          <Sparkles className="w-10 h-10 text-primary mx-auto mb-4" />
           <h2 className="text-3xl font-bold mb-4">Thinking about MCPHS? 🩺</h2>
           <p className="text-base mb-6 text-muted-foreground">
             Read my honest experiences before making your decision.
