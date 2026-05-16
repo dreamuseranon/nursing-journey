@@ -1,9 +1,64 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Heart, Sparkles, Stethoscope, Home, BookOpen, User, Users, Star } from 'lucide-react';
 
-function KawaiiNurse({ size = 160, className = '' }: { size?: number, className?: string }) {
+function CartoonNurse({ size = 160, className = '' }: { size?: number, className?: string }) {
   return (
-    <svg width={size} height={size * 1.3} viewBox="0 0 160 210" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg width={size} height={size * 1.2} viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      {/* Hair */}
+      <ellipse cx="100" cy="58" rx="38" ry="42" fill="hsl(20,65%,42%)"/>
+      <path d="M62 55 Q55 90 58 130 Q65 125 70 115 Q68 90 72 70Z" fill="hsl(20,65%,38%)"/>
+      <path d="M138 55 Q145 90 142 130 Q135 125 130 115 Q132 90 128 70Z" fill="hsl(20,65%,38%)"/>
+      {/* Nurse cap */}
+      <path d="M68 48 Q100 35 132 48 L128 58 Q100 48 72 58Z" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
+      <rect x="82" y="38" width="36" height="14" rx="5" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
+      <rect x="96" y="40" width="8" height="14" rx="2" fill="hsl(340,70%,60%)"/>
+      <rect x="90" y="45" width="20" height="6" rx="2" fill="hsl(340,70%,60%)"/>
+      {/* Face */}
+      <ellipse cx="100" cy="78" rx="32" ry="34" fill="hsl(25,60%,88%)"/>
+      {/* Eyes */}
+      <ellipse cx="86" cy="72" rx="10" ry="11" fill="white"/>
+      <ellipse cx="114" cy="72" rx="10" ry="11" fill="white"/>
+      <ellipse cx="86" cy="73" rx="7" ry="8" fill="hsl(200,80%,35%)"/>
+      <ellipse cx="114" cy="73" rx="7" ry="8" fill="hsl(200,80%,35%)"/>
+      <ellipse cx="86" cy="73" rx="4" ry="5" fill="hsl(210,90%,20%)"/>
+      <ellipse cx="114" cy="73" rx="4" ry="5" fill="hsl(210,90%,20%)"/>
+      <ellipse cx="89" cy="70" rx="2.5" ry="3" fill="white"/>
+      <ellipse cx="117" cy="70" rx="2.5" ry="3" fill="white"/>
+      <path d="M77 61 Q86 56 95 60" stroke="hsl(20,50%,30%)" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <path d="M105 60 Q114 56 123 61" stroke="hsl(20,50%,30%)" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      {/* Blush */}
+      <ellipse cx="74" cy="82" rx="10" ry="6" fill="hsl(340,70%,80%)" opacity="0.55"/>
+      <ellipse cx="126" cy="82" rx="10" ry="6" fill="hsl(340,70%,80%)" opacity="0.55"/>
+      {/* Mask */}
+      <rect x="72" y="84" width="56" height="26" rx="10" fill="hsl(195,65%,82%)" stroke="hsl(195,65%,60%)" strokeWidth="1.5"/>
+      <path d="M72 93 Q100 100 128 93" stroke="hsl(195,65%,60%)" strokeWidth="1" fill="none"/>
+      <path d="M72 88 Q60 83 64 75" stroke="hsl(195,65%,60%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M128 88 Q140 83 136 75" stroke="hsl(195,65%,60%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      {/* Body */}
+      <path d="M55 120 Q52 175 55 220 L145 220 Q148 175 145 120 Q125 108 100 108 Q75 108 55 120Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      <path d="M80 110 Q100 120 120 110 L118 125 Q100 132 82 125Z" fill="hsl(195,60%,75%)" opacity="0.8"/>
+      <rect x="96" y="138" width="8" height="22" rx="2" fill="hsl(340,70%,65%)" opacity="0.8"/>
+      <rect x="90" y="145" width="20" height="8" rx="2" fill="hsl(340,70%,65%)" opacity="0.8"/>
+      {/* Waving arm */}
+      <path d="M55 120 Q40 110 28 88 Q22 75 30 68 Q38 62 44 72 Q50 82 52 95 Q54 108 58 118Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      <ellipse cx="30" cy="65" rx="14" ry="12" fill="hsl(25,60%,88%)"/>
+      <path d="M20 58 Q17 48 20 44 Q23 42 25 48 Q24 54 22 58Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M26 55 Q24 44 27 40 Q31 38 32 45 Q31 51 28 55Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M33 54 Q32 43 35 40 Q39 39 39 46 Q38 52 35 55Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      <path d="M39 56 Q39 46 42 44 Q46 44 45 51 Q44 56 41 57Z" fill="hsl(25,60%,88%)" stroke="hsl(20,30%,75%)" strokeWidth="0.8"/>
+      {/* Stethoscope arm */}
+      <path d="M145 120 Q158 130 164 155 Q166 168 158 172 Q150 175 146 162 Q142 148 140 132Z" fill="white" stroke="hsl(263,52%,75%)" strokeWidth="1.5"/>
+      <ellipse cx="160" cy="168" rx="11" ry="10" fill="hsl(25,60%,88%)"/>
+      <path d="M160 168 Q172 160 175 148 Q178 136 170 130 Q162 124 156 132 Q152 140 158 146" stroke="hsl(263,52%,60%)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+      <circle cx="158" cy="146" r="5" fill="hsl(263,52%,65%)"/>
+      {/* Legs */}
+      <rect x="68" y="218" width="26" height="22" rx="5" fill="hsl(250,25%,82%)"/>
+      <rect x="106" y="218" width="26" height="22" rx="5" fill="hsl(250,25%,82%)"/>
+      <ellipse cx="81" cy="240" rx="18" ry="7" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.2"/>
+      <ellipse cx="119" cy="240" rx="18" ry="7" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.2"/>
+      {/* Sparkles */}
+      <path d="M170 50 L172 44 L174 50 L180 52 L174 54 L172 60 L170 54 L164 52 Z" fill="hsl(340,60%,72%)" opacity="0.9"/>
+      <circle cx="175" cy="90" r="4" fill="hsl(195,60%,68%)" opacity="0.8"/>
       {/* Nurse cap */}
       <ellipse cx="80" cy="42" rx="34" ry="8" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
       <rect x="46" y="34" width="68" height="12" rx="4" fill="white" stroke="hsl(263,52%,72%)" strokeWidth="1.5"/>
@@ -113,7 +168,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       {/* Kawaii nurse - fixed bottom right */}
       <div className="fixed bottom-0 right-2 pointer-events-none z-0 nurse-bob" style={{opacity: 0.22}}>
-        <KawaiiNurse size={110} />
+        <CartoonNurse size={110} />
       </div>
 
       {/* Header */}
@@ -170,7 +225,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="flex items-center gap-3">
-              <KawaiiNurse size={40} />
+              <CartoonNurse size={40} />
               <span className="text-xl font-bold text-gradient-pink" style={{fontFamily: 'Playfair Display, serif'}}>The Masked Nurse</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-md">
