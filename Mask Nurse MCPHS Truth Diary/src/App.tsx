@@ -3,6 +3,7 @@ import HomePage from "@/pages/HomePage";
 import BlogPage from "@/pages/BlogPage";
 import BlogPostPage from "@/pages/BlogPostPage";
 import AboutPage from "@/pages/AboutPage";
+import StudentStoriesPage from "@/pages/StudentStoriesPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { Layout } from "@/components/Layout";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/student-stories" element={<StudentStoriesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
