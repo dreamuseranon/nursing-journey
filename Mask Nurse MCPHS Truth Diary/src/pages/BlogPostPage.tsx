@@ -154,6 +154,19 @@ function BlogPostPage() {
     return 'bg-orange-100 text-orange-700 border-orange-200';
   };
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        text: post.content[0],
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
@@ -201,26 +214,23 @@ function BlogPostPage() {
             <Sparkles className="w-5 h-5 text-primary" />
             <Heart className="w-5 h-5 text-primary" fill="currentColor" />
           </div>
-         <Button
-  variant="outline"
-  size="sm"
-  className="gap-2"
-  onClick={() => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: post.content[0],
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
-  }}
->
-  <Share2 className="w-4 h-4" />
-  Share Post
-</Button>
+          <Button variant="outline" size="sm" className="gap-2" onClick={handleShare}>
+            <Share2 className="w-4 h-4" />
+            Share Post
+          </Button>
+        </div>
+      </article>
+
+      <div className="cute-card border-border bg-muted/30">
+        <div className="flex items-center gap-2 mb-4">
+          <Sparkles className="w-5 h-5 text-primary" />
+          <h3 className="font-bold text-lg">Read More Stories</h3>
+        </div>
+        <Link to="/blog">
+          <Button variant="outline" className="w-full">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            View All Blog Posts
+          </Button>
         </Link>
       </div>
     </div>
