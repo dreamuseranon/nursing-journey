@@ -16,8 +16,9 @@ interface BlogPost {
 function BlogPage() {
   const [searchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category');
+  const searchFromHome = searchParams.get('search') || '';
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryFilter || 'all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(searchFromHome);
 
   const categories = [
     { id: 'all', name: 'All Posts', icon: BookOpen, color: 'text-primary' },
