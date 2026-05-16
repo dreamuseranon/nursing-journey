@@ -28,36 +28,13 @@ function BlogPage() {
 
   const blogPosts: BlogPost[] = [
     {
-      id: '1',
-      title: 'Why I Started This Blog',
-      excerpt: 'This is not just a place for me to vent. This is a resource. This is the thing I wish I had found before I enrolled at MCPHS.',
-      category: 'personal',
-      date: 'May 1, 2026',
-      readTime: '4 min read'
-    },
-    {
-      id: '2',
-      title: 'The Disorganization is Real',
-      excerpt: 'The clinical placement process at MCPHS is a mess. Emails go unanswered, phone calls go unanswered, and you cannot even leave a voicemail because the box is full.',
-      category: 'the-truth-about-mcphs',
-      date: 'May 8, 2026',
-      readTime: '5 min read'
-    },
-    {
-      id: '3',
-      title: 'When the People Meant to Help You Cannot',
-      excerpt: 'We were given wrong information and wrong answers during review sessions. Things that showed up on our exams. And we did not get those points back.',
-      category: 'the-truth-about-mcphs',
-      date: 'May 12, 2026',
-      readTime: '6 min read'
-    },
-    {
-      id: '4',
-      title: 'Study Methods That Actually Helped Me',
-      excerpt: 'The slides, YouTube, Simple Nursing, and Claude. Honestly Claude made the biggest difference. I started scoring higher once I stopped using what the program recommended.',
+      id: '6',
+      title: 'Protecting Your Mental Health in This Program',
+      excerpt: 'Nursing school is hard. But there is a difference between the normal hard and the kind of hard that comes from being in a program that does not support you well.',
       category: 'nursing-school-life',
-      date: 'May 15, 2026',
-      readTime: '4 min read'
+      date: 'May 22, 2026',
+      readTime: '5 min read',
+      isNew: true
     },
     {
       id: '5',
@@ -69,13 +46,36 @@ function BlogPage() {
       isNew: true
     },
     {
-      id: '6',
-      title: 'Protecting Your Mental Health in This Program',
-      excerpt: 'Nursing school is hard. But there is a difference between the normal hard and the kind of hard that comes from being in a program that does not support you well.',
+      id: '4',
+      title: 'Study Methods That Actually Helped Me',
+      excerpt: 'The slides, YouTube, Simple Nursing, and Claude. Honestly Claude made the biggest difference. I started scoring higher once I stopped using what the program recommended.',
       category: 'nursing-school-life',
-      date: 'May 22, 2026',
-      readTime: '5 min read',
-      isNew: true
+      date: 'May 15, 2026',
+      readTime: '4 min read'
+    },
+    {
+      id: '3',
+      title: 'When the People Meant to Help You Cannot',
+      excerpt: 'We were given wrong information and wrong answers during review sessions. Things that showed up on our exams. And we did not get those points back.',
+      category: 'the-truth-about-mcphs',
+      date: 'May 12, 2026',
+      readTime: '6 min read'
+    },
+    {
+      id: '2',
+      title: 'The Disorganization is Real',
+      excerpt: 'The clinical placement process at MCPHS is a mess. Emails go unanswered, phone calls go unanswered, and you cannot even leave a voicemail because the box is full.',
+      category: 'the-truth-about-mcphs',
+      date: 'May 8, 2026',
+      readTime: '5 min read'
+    },
+    {
+      id: '1',
+      title: 'Why I Started This Blog',
+      excerpt: 'This is not just a place for me to vent. This is a resource. This is the thing I wish I had found before I enrolled at MCPHS.',
+      category: 'personal',
+      date: 'May 1, 2026',
+      readTime: '4 min read'
     },
   ];
 
@@ -129,7 +129,7 @@ function BlogPage() {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search posts... (try HESI, clinical, study)"
+            placeholder="Search posts... try HESI, clinical, study"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-border bg-white focus:outline-none focus:border-primary transition-colors text-foreground placeholder:text-muted-foreground"
@@ -137,6 +137,7 @@ function BlogPage() {
         </div>
       </div>
 
+      {/* Category Filter */}
       <div className="mb-12">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4 flex items-center gap-2">
           <Sparkles className="w-4 h-4" />
@@ -164,6 +165,7 @@ function BlogPage() {
         </div>
       </div>
 
+      {/* Posts Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {filteredPosts.map((post) => (
           <Link key={post.id} to={`/blog/${post.id}`} className="group">
