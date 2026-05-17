@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -44,6 +43,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^3.0.0",
+    "disqus-react": "^1.1.5",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.503.0",
@@ -61,8 +61,6 @@
     "vaul": "^1.1.2",
     "zod": "^3.24.3",
     "zustand": "^5.0.6"
-    "disqus-react": "^1.1.5",
-"react": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
