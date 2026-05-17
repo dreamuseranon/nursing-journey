@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, Heart, Sparkles, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+import { DiscussionEmbed } from 'disqus-react';
 
 interface BlogPostData {
   id: string;
@@ -13,6 +15,40 @@ interface BlogPostData {
 
 function BlogPostPage() {
   const { id } = useParams();
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  useEffect(() => {
+    if (id) {
+      const savedLiked = localStorage.getItem(`liked-post-${id}`);
+      const savedCount = localStorage.getItem(`like-count-${id}`);
+      if (savedLiked === 'true') setLiked(true);
+      if (savedCount) setLikeCount(parseInt(savedCount));
+    }
+  }, [id]);
+
+  const handleLike = () => {
+    if (!id) return;
+    const newLiked = !liked;
+    const newCount = newLiked ? likeCount + 1 : Math.max(0, likeCount - 1);
+    setLiked(newLiked);
+    setLikeCount(newCount);
+    localStorage.setItem(`liked-post-${id}`, String(newLiked));
+    localStorage.setItem(`like-count-${id}`, String(newCount));
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: post?.title || 'The Masked Nurse',
+        text: post?.content[0] || '',
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
 
   const posts: Record<string, BlogPostData> = {
     '1': {
@@ -135,9 +171,7 @@ function BlogPostPage() {
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <Heart className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
         <h1 className="text-3xl font-bold mb-4">Post Not Found</h1>
-        <p className="text-muted-foreground mb-8">
-          Sorry, this blog post does not exist yet.
-        </p>
+        <p className="text-muted-foreground mb-8">Sorry, this blog post does not exist yet.</p>
         <Link to="/blog">
           <Button>
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -149,43 +183,30 @@ function BlogPostPage() {
   }
 
   const getCategoryColor = (category: string) => {
-    if (category.includes('MCPHS')) return 'bg-red-100 text-red-700 border-red-200';
-    if (category.includes('Life')) return 'bg-purple-100 text-purple-700 border-purple-200';
-    return 'bg-orange-100 text-orange-700 border-orange-200';
-  };
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: post.content[0],
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
+    if (category.includes('MCPHS')) return 'bg-pink-100 text-pink-600 border-pink-200';
+    if (category.includes('Life')) return 'bg-purple-100 text-purple-600 border-purple-200';
+    return 'bg-blue-100 text-blue-600 border-blue-200';
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
+      <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-pink-500 transition-colors mb-8 font-bold">
         <ArrowLeft className="w-4 h-4" />
         <span>Back to all posts</span>
       </Link>
 
-      <article className="cute-card border-primary/30 mb-8">
+      <article className="cute-card border-pink-200 mb-8">
         <div className="mb-6">
           <span className={`sticker-badge border ${getCategoryColor(post.category)}`}>
             {post.category}
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl mb-6 leading-tight text-gradient-pink">
           {post.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8 font-semibold">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             <span>{post.date}</span>
@@ -196,38 +217,77 @@ function BlogPostPage() {
           </div>
         </div>
 
-        <div className="h-px bg-gradient-cute mb-8" />
+        <div className="h-px mb-8" style={{background: 'linear-gradient(135deg, #FFB7D5, #C9B8FF, #B8E0FF)'}} />
 
         <div className="prose prose-lg max-w-none">
           {post.content.map((paragraph, index) => (
-            <p key={index} className="text-foreground/90 leading-relaxed mb-4">
+            <p key={index} className="text-foreground/85 leading-relaxed mb-5 font-medium text-base">
               {paragraph}
             </p>
           ))}
         </div>
 
-        <div className="h-px bg-gradient-cute mt-12 mb-8" />
+        <div className="h-px mt-12 mb-8" style={{background: 'linear-gradient(135deg, #FFB7D5, #C9B8FF, #B8E0FF)'}} />
 
+        {/* Engagement row */}
         <div className="flex items-center justify-between flex-wrap gap-4">
-          <div className="flex items-center gap-2">
-            <Heart className="w-5 h-5 text-primary" fill="currentColor" />
-            <Sparkles className="w-5 h-5 text-primary" />
-            <Heart className="w-5 h-5 text-primary" fill="currentColor" />
-          </div>
-          <Button variant="outline" size="sm" className="gap-2" onClick={handleShare}>
+          {/* Heart button */}
+          <button
+            onClick={handleLike}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-200 border-2 ${
+              liked
+                ? 'bg-pink-100 border-pink-300 text-pink-600 scale-105'
+                : 'bg-white border-pink-200 text-pink-400 hover:bg-pink-50 hover:border-pink-300'
+            }`}
+          >
+            <Heart
+              className={`w-5 h-5 transition-all duration-200 ${liked ? 'fill-pink-500 text-pink-500 scale-110' : ''}`}
+              fill={liked ? 'currentColor' : 'none'}
+            />
+            <span>{liked ? 'Liked! 🩺' : 'Like this post'}</span>
+            {likeCount > 0 && (
+              <span className="bg-pink-200 text-pink-700 px-2 py-0.5 rounded-full text-xs font-bold">
+                {likeCount}
+              </span>
+            )}
+          </button>
+
+          {/* Share button */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-2 rounded-full border-2 border-purple-200 text-purple-500 hover:bg-purple-50 font-bold"
+            onClick={handleShare}
+          >
             <Share2 className="w-4 h-4" />
-            Share Post
+            Share Post 💕
           </Button>
         </div>
       </article>
 
-      <div className="cute-card border-border bg-muted/30">
-        <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-5 h-5 text-primary" />
-          <h3 className="font-bold text-lg">Read More Stories</h3>
+      {/* Disqus Comments */}
+      <div className="cute-card border-pink-200 mb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-2xl">💬</span>
+          <h3 className="text-2xl text-gradient-pink">Comments</h3>
+          <span className="text-sm text-muted-foreground font-semibold">Share your thoughts 🌸</span>
         </div>
+        <DiscussionEmbed
+          shortname="https-themaskednurse-com"
+          config={{
+            url: `https://www.themaskednurse.com/blog/${post.id}`,
+            identifier: `post-${post.id}`,
+            title: post.title,
+          }}
+        />
+      </div>
+
+      {/* Back to blog */}
+      <div className="cute-card border-pink-200 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 text-center">
+        <div className="text-3xl mb-3">🌸🩺💕</div>
+        <h3 className="text-xl mb-3 text-gradient-pink">Read More Stories</h3>
         <Link to="/blog">
-          <Button variant="outline" className="w-full">
+          <Button className="bubbly-button text-white border-0" style={{background: 'linear-gradient(135deg, #FFB7D5, #C9B8FF)'}}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             View All Blog Posts
           </Button>
